@@ -113,7 +113,7 @@ function generateRSS()
         if (!empty($file->episode->authorPG->emailPG)) {
             $author = $file->episode->authorPG->emailPG;
             if (!empty($file->episode->authorPG->namePG))
-                $author .= ' (' . $file->episode->authorPG->namePG . ')';
+                $author .= ' (' . htmlspecialchars($file->episode->authorPG->namePG) . ')';
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
@@ -142,7 +142,7 @@ function generateRSS()
         $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
         $item .= $indent . '<author>' . $author . '</author>' . $linebreak;
         if (!empty($file->episode->authorPG->namePG)) {
-            $item .= $indent . '<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>' . $linebreak;
+            $item .= $indent . '<itunes:author>' . htmlspecialchars($file->episode->authorPG->namePG) . '</itunes:author>' . $linebreak;
         } else {
             $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
         }
