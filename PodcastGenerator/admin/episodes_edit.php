@@ -172,11 +172,11 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
                     <hr>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>
-                        <input type="text" name="title" class="form-control" value="<?php echo htmlspecialchars($episode->episode->titlePG); ?>" required>
+                        <input type="text" name="title" class="form-control" value="<?php echo $episode->episode->titlePG; ?>" required>
                     </div>
                     <div class="form-group">
                         <?php echo _('Short Description'); ?>*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo htmlspecialchars($episode->episode->shortdescPG); ?>" maxlength="255" oninput="shortDescCheck()" required>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo $episode->episode->shortdescPG; ?>" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255<?php echo _(' characters remaining'); ?></i>
                     </div>
                     <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
@@ -211,7 +211,7 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
                     <hr>
                     <div class="form-group">
                         <?php echo _('Long Description'); ?>:<br>
-                        <textarea name="longdesc"><?php echo htmlspecialchars($episode->episode->longdescPG); ?></textarea><br>
+                        <textarea name="longdesc"><?php echo $episode->episode->longdescPG; ?></textarea><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('iTunes Keywords'); ?>:<br>
