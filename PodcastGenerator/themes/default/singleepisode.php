@@ -45,7 +45,7 @@ if ($correctepisode["episode"]["imgPG"] != "") {
         $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
     echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $filename . '"><br>';
 }
-echo '  <small>' . $correctepisode["episode"]["shortdescPG"] . '</small><br>';
+echo '  <small>' . $correctepisode["episode"]["longdescPG"] . '</small><br>';
 if (isset($_SESSION["username"])) {
     echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $episodes[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
 }
