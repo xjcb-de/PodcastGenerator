@@ -135,6 +135,10 @@ if (sizeof($_POST) > 0) {
     $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
     $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
 
+    // Automatically fill an empty long description with the contents
+    // of the short description.
+    $long_desc = empty($_POST['longdesc']) ? $_POST['shortdesc'] : $_POST['longdesc'];
+        
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
@@ -142,7 +146,7 @@ if (sizeof($_POST) > 0) {
 	<episode>
 	    <titlePG><![CDATA[' . htmlspecialchars($_POST['title']) . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . htmlspecialchars($_POST['shortdesc']) . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . htmlspecialchars($_POST['longdesc']) . ']]></longdescPG>
+	    <longdescPG><![CDATA[' . htmlspecialchars($long_desc) . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
@@ -209,6 +213,7 @@ if (sizeof($_POST) > 0) {
                     <h3><?php echo _('Main Informations'); ?></h3>
                     <hr>
                     <div class="form-group">
+                        Filename may only contain <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>, <code>-</code>, <code>_</code> and <code>.</code><br>
                         <?php echo _('File'); ?>*:<br>
                         <input type="file" name="file" required><br>
                     </div>
